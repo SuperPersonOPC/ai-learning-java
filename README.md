@@ -4,10 +4,11 @@ It is for AI learning in Java language.
 
 ## Project structure
 
-This repository is split into two Maven modules:
+This repository is split into three Maven modules:
 
 - `java-learning-module`: Core Java examples (basics, collections, OOP) and unit tests.
 - `spring-ai-module`: Spring Boot app integrated with Spring AI for chat completions.
+- `rag-demo-module`: Spring Boot app demonstrating a simple Retrieval-Augmented Generation (RAG) flow.
 
 ### Stack
 
@@ -65,4 +66,35 @@ Example with curl:
 curl -X POST "http://localhost:8080/api/v1/chat" \
   -H "Content-Type: application/json" \
   -d '{"message":"What is Spring AI?"}'
+```
+
+## Run the RAG demo module
+
+```bash
+mvn -pl rag-demo-module spring-boot:run
+```
+
+### RAG API
+
+Endpoint:
+
+```text
+POST /api/v1/rag
+Content-Type: application/json
+```
+
+Body:
+
+```json
+{
+  "question": "How does RAG reduce hallucinations?"
+}
+```
+
+Example with curl:
+
+```bash
+curl -X POST "http://localhost:8081/api/v1/rag" \
+  -H "Content-Type: application/json" \
+  -d '{"question":"Explain the basic RAG workflow"}'
 ```

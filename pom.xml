@@ -25,6 +25,7 @@
     <modules>
         <module>java-learning-module</module>
         <module>spring-ai-module</module>
+        <module>rag-demo-module</module>
     </modules>
 
     <dependencyManagement>
