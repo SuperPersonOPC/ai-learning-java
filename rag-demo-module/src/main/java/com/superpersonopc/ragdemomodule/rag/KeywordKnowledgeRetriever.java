@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -71,7 +72,7 @@ public class KeywordKnowledgeRetriever {
     private Set<String> tokenize(String text) {
         String normalized = text == null ? "" : text.toLowerCase();
         String[] rawTokens = TOKEN_SPLIT.split(normalized);
-        List<String> cleaned = new ArrayList<>();
+        Set<String> cleaned = new LinkedHashSet<>();
         for (String token : rawTokens) {
             if (token.length() >= 2) {
                 cleaned.add(token);
