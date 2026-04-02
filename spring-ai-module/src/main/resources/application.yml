@@ -3,7 +3,9 @@ spring:
     name: spring-ai-module
   ai:
     openai:
-      api-key: ${OPENAI_API_KEY:}
+      # Use a non-empty fallback so local startup does not fail
+      # when OPENAI_API_KEY is not provided.
+      api-key: ${OPENAI_API_KEY:disabled}
       chat:
         options:
           model: gpt-4o-mini
