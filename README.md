@@ -2,9 +2,12 @@
 
 It is for AI learning in Java language.
 
-## Spring Boot + Spring AI module
+## Project structure
 
-This repository now includes a Maven-based Spring Boot module integrated with Spring AI.
+This repository is split into two Maven modules:
+
+- `java-learning-module`: Core Java examples (basics, collections, OOP) and unit tests.
+- `spring-ai-module`: Spring Boot app integrated with Spring AI for chat completions.
 
 ### Stack
 
@@ -12,6 +15,18 @@ This repository now includes a Maven-based Spring Boot module integrated with Sp
 - Spring Boot 3.3.5
 - Spring AI 1.0.0
 - OpenAI chat model starter
+
+## Build and test all modules
+
+```bash
+mvn clean verify
+```
+
+## Run the Java learning demo
+
+```bash
+mvn -pl java-learning-module exec:java -Dexec.mainClass=com.superpersonopc.learning.App
+```
 
 ### Configure API key
 
@@ -24,13 +39,7 @@ export OPENAI_API_KEY="your_api_key_here"
 ### Run
 
 ```bash
-./mvnw spring-boot:run
-```
-
-or with a local Maven install:
-
-```bash
-mvn spring-boot:run
+mvn -pl spring-ai-module spring-boot:run
 ```
 
 ### API
@@ -56,3 +65,4 @@ Example with curl:
 curl -X POST "http://localhost:8080/api/v1/chat" \
   -H "Content-Type: application/json" \
   -d '{"message":"What is Spring AI?"}'
+```
