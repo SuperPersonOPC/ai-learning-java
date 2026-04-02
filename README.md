@@ -9,6 +9,8 @@ This repository is split into three Maven modules:
 - `java-learning-module`: Core Java examples (basics, collections, OOP) and unit tests.
 - `spring-ai-module`: Spring Boot app integrated with Spring AI for chat completions.
 - `agent2agent-demo-module`: Spring Boot demo showing an agent-to-agent workflow (planner -> writer).
+- `rag-demo-module`: Spring Boot app demonstrating a simple Retrieval-Augmented Generation (RAG) flow.
+
 
 ### Stack
 
@@ -74,12 +76,20 @@ curl -X POST "http://localhost:8080/api/v1/chat" \
 mvn -pl agent2agent-demo-module spring-boot:run
 ```
 
-### API
+## Run the RAG demo module
+
+```bash
+mvn -pl rag-demo-module spring-boot:run
+```
+
 
 Endpoint:
 
 ```text
+
 POST /api/v1/agent2agent
+
+POST /api/v1/rag
 Content-Type: application/json
 ```
 
@@ -88,13 +98,20 @@ Body:
 ```json
 {
   "goal": "Create a launch plan for a new learning module"
+  "question": "How does RAG reduce hallucinations?"
+
 }
 ```
 
 Example with curl:
 
 ```bash
+
 curl -X POST "http://localhost:8081/api/v1/agent2agent" \
   -H "Content-Type: application/json" \
   -d '{"goal":"Create a launch plan for a new learning module"}'
+
+curl -X POST "http://localhost:8081/api/v1/rag" \
+  -H "Content-Type: application/json" \
+  -d '{"question":"Explain the basic RAG workflow"}'
 ```
