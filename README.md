@@ -1,43 +1,58 @@
 # ai-learning-java
 
-Starter project for learning core Java concepts with simple, tested examples.
+It is for AI learning in Java language.
 
-## What is included
+## Spring Boot + Spring AI module
 
-- Maven-based Java 17 project
-- Core concept demos:
-  - Basic methods and validation (`BasicsDemo`)
-  - OOP with inheritance (`Person`, `Student`)
-  - Collections and duplicate removal (`CollectionsDemo`)
-- Unit tests with JUnit 5
+This repository now includes a Maven-based Spring Boot module integrated with Spring AI.
 
-## Project structure
+### Stack
+
+- Java 21
+- Spring Boot 3.3.5
+- Spring AI 1.0.0
+- OpenAI chat model starter
+
+### Configure API key
+
+Set your API key as an environment variable:
+
+```bash
+export OPENAI_API_KEY="your_api_key_here"
+```
+
+### Run
+
+```bash
+./mvnw spring-boot:run
+```
+
+or with a local Maven install:
+
+```bash
+mvn spring-boot:run
+```
+
+### API
+
+Endpoint:
 
 ```text
-src/main/java/com/superpersonopc/learning
-src/test/java/com/superpersonopc/learning
+POST /api/v1/chat
+Content-Type: application/json
 ```
 
-## Requirements
+Body:
 
-- Java 17+
-- Maven 3.9+
+```json
+{
+  "message": "Explain Spring AI in one paragraph"
+}
+```
 
-## Run tests
+Example with curl:
 
 ```bash
-mvn test
-```
-
-## Run the demo app
-
-```bash
-mvn -q exec:java -Dexec.mainClass=com.superpersonopc.learning.App
-```
-
-If the `exec` goal is unavailable, run directly with compiled classes:
-
-```bash
-mvn -q -DskipTests compile
-java -cp target/classes com.superpersonopc.learning.App
-```
+curl -X POST "http://localhost:8080/api/v1/chat" \
+  -H "Content-Type: application/json" \
+  -d '{"message":"What is Spring AI?"}'
