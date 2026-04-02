@@ -4,10 +4,11 @@ It is for AI learning in Java language.
 
 ## Project structure
 
-This repository is split into two Maven modules:
+This repository is split into three Maven modules:
 
 - `java-learning-module`: Core Java examples (basics, collections, OOP) and unit tests.
 - `spring-ai-module`: Spring Boot app integrated with Spring AI for chat completions.
+- `agent2agent-demo-module`: Spring Boot demo showing an agent-to-agent workflow (planner -> writer).
 
 ### Stack
 
@@ -65,4 +66,35 @@ Example with curl:
 curl -X POST "http://localhost:8080/api/v1/chat" \
   -H "Content-Type: application/json" \
   -d '{"message":"What is Spring AI?"}'
+```
+
+## Run the agent2agent demo
+
+```bash
+mvn -pl agent2agent-demo-module spring-boot:run
+```
+
+### API
+
+Endpoint:
+
+```text
+POST /api/v1/agent2agent
+Content-Type: application/json
+```
+
+Body:
+
+```json
+{
+  "goal": "Create a launch plan for a new learning module"
+}
+```
+
+Example with curl:
+
+```bash
+curl -X POST "http://localhost:8081/api/v1/agent2agent" \
+  -H "Content-Type: application/json" \
+  -d '{"goal":"Create a launch plan for a new learning module"}'
 ```
